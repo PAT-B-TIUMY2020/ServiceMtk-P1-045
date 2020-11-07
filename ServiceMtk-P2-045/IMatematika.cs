@@ -13,18 +13,31 @@ namespace ServiceMtk_P2_045
     {
         [OperationContract]
         /* output->*/
+        [FaultContract(typeof(Mathfault))]
         int Tambah(int a, int b); //method
         [OperationContract]
+        [FaultContract(typeof(Mathfault))]
         int Kurang(int a, int b); //input
         [OperationContract]
+        [FaultContract(typeof(Mathfault))]
         int Kali(int a, int b);
         [OperationContract]
+        [FaultContract(typeof(Mathfault))]
         int Bagi(int a, int b);
         [OperationContract]
+        [FaultContract(typeof(Mathfault))]
         Koordinat TKoordinat(Koordinat a, Koordinat b); //object dari class
     }
 
     [DataContract]
+
+    class Mathfault
+    {
+        [DataMember]
+        public string Kode { get; set; }
+        [DataMember]
+        public string Pesan { get; set; }
+    }
     public class Koordinat
     {
         private int _x, _y; //atribut
